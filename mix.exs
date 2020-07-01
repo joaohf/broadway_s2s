@@ -1,7 +1,7 @@
 defmodule BroadwayS2s.MixProject do
   use Mix.Project
 
-  @version "0.0.1"
+  @version "0.0.1-pre1"
   @description "A S2S connector for Broadway"
 
   def project do
@@ -28,8 +28,8 @@ defmodule BroadwayS2s.MixProject do
   defp deps do
     [
       {:broadway, "~> 0.6.0"},
-      {:nifi_s2s, "~> 0.0.1"},
-      {:ex_doc, ">= 0.19.0", only: :docs}
+      {:nifi_s2s, "~> 0.0.2"},
+      {:ex_doc, ">= 0.19.0", only: :dev, runtime: false}
     ]
   end
 

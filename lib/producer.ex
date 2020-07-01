@@ -33,7 +33,7 @@ defmodule BroadwayS2S.Producer do
     send(self(), {:connect, :no_init_client})
 
     {:producer,
-      %{
+     %{
        demand: 0,
        receive_timer: nil,
        receive_interval: receive_interval,
@@ -78,7 +78,7 @@ defmodule BroadwayS2S.Producer do
     IO.inspect(_reason, label: "reason")
     %{client: client, conn_ref: conn_ref} = state
 
-    #:ok = client.close_connection(conn_ref)
+    # :ok = client.close_connection(conn_ref)
     :ok
   end
 
