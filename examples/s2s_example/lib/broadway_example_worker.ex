@@ -45,16 +45,9 @@ defmodule BroadwayS2SExample.Worker do
     end)
   end
 
-  @impl true
-  def handle_batch(_, messages, _, _) do
-    list = messages |> Enum.map(fn e -> e.data end)
-    IO.inspect(list, label: "Got batch of finished jobs from processors, sending ACKs to SQS as a batch.")
-    messages
-  end
-
   def transform(event, _opts) do
     %Message{
-      data: String.replace(event.data, ~s("), ""),
+      data: String.replace(event.metadata["symbol"], ~s("), ""),
       acknowledger: {__MODULE__, :ack_id, :ack_data}
     }
   end

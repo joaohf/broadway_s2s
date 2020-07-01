@@ -59,7 +59,7 @@ defmodule BroadwayS2S.NifiClient do
 
     message = %Message{data: data, metadata: metadata, acknowledger: acknowledger}
 
-    flowfiles |> :nifi_flowfile.remove() |> wrap_received_messages([message | acc])
+    flowfiles |> :nifi_flowfile.remove() |> wrap_received_messages([message | acc], ack_ref)
   end
 
   defp wrap_received_messages(flowfiles, acc, ack_ref) do

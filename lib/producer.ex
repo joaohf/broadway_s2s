@@ -43,12 +43,12 @@ defmodule BroadwayS2S.Producer do
      }}
   end
 
-  @impl true
+  @impl GenStage
   def handle_demand(incoming_demand, %{demand: demand} = state) do
     handle_receive_messages(%{state | demand: demand + incoming_demand})
   end
 
-  @impl true
+  @impl GenStage
   def handle_info(:receive_messages, %{receive_timer: nil} = state) do
     {:noreply, [], state}
   end
@@ -100,7 +100,7 @@ defmodule BroadwayS2S.Producer do
     {:noreply, [], state}
   end
 
-  defp receive_flowfiles_from_s2s(state, total_demand) do
+  defp receive_flowfiles_from_s2s(state, _total_demand) do
     %{client: {client, _config}, conn_ref: conn_ref} = state
     client.receive_flowfiles(conn_ref, nil)
   end

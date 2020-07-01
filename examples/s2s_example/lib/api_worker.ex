@@ -33,6 +33,8 @@ defmodule Api.Worker do
   ## Helper Functions
 
   defp quote_of(_symbol) do
-    10
+    # could get the real quote value here
+    value = 10.50
+    {:ok, value}
   end
 end

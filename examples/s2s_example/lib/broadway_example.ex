@@ -27,7 +27,6 @@ defmodule BroadwayS2SExample do
     |> Stream.map(&String.split(&1, ","))
     |> Enum.map(fn columns -> List.first(columns) end)
     |> Enum.reduce(flowfiles, &make_flowfiles/2)
-    |> IO.inspect(label: "flowfiles")
     |> transfer(pid)
 
     :ok = :nifi_s2s.close(pid)
